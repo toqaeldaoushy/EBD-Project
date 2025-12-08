@@ -6,6 +6,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+
 
 dotenv.config(); // Load .env variables
 
@@ -22,6 +24,8 @@ app.get("/", (req, res) => {
 
 // AUTH ROUTES
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+
 
 // CONNECT TO MONGODB & START SERVER
 async function main() {
@@ -40,3 +44,4 @@ async function main() {
 }
 
 main();
+
