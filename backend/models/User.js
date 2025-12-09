@@ -1,21 +1,28 @@
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
-const UserSchema = new mongoose.Schema({
-  fullName: { 
-    type: String, 
-    required: true 
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 6,
+    },
   },
-  
-  email: { 
-    type: String, 
-    unique: true, 
-    required: true 
-  },
-
-  password: { 
-    type: String, 
-    required: true 
-  },
+  { timestamps: true }
+);
 
   phone: { 
     type: String, 
@@ -36,6 +43,12 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.model("User", UserSchema);
+// Method to compare password
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return bcrypt.compare(enteredPassword, this.password);
+};
 
+const User = mongoose.model("User", userSchema);
 export default User;
+
+
