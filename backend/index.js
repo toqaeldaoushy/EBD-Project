@@ -65,7 +65,7 @@ async function main() {
     message: "Profile updated successfully",
     user: fakeUser
   });
-});
+} 
 
 // ✅ FAKE CHANGE PASSWORD
 app.put("/api/users/change-password", (req, res) => {
@@ -76,4 +76,4 @@ app.put("/api/users/change-password", (req, res) => {
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`✅ Offline server running at http://localhost:${PORT}`);
-});
+});}
