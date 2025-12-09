@@ -24,12 +24,23 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Hash password before saving
-userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next();
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
+  phone: { 
+    type: String, 
+    unique: true, 
+    required: true 
+  },
+
+  accountId: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "Account",
+    required: false   // You may assign it later after account creation
+  },
+
+  balance: {
+    type: Number,
+    required: true,
+    default: 0.00 
+  },
 });
 
 // Method to compare password

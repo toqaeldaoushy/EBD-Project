@@ -13,7 +13,7 @@
 |------------------|------------|----------------|-------------------------------|
 | Toqa Eldaoushy   | 13007068   | T3             | @toqaeldaoushy                |
 | Alya Mandour     | 13007246   | T3             | @alyamandour                  |
-| Sara Samer       | 13002628   | T3             | @sarasamer01                  |
+| Sara Samer       | 13002628   | T3             | @sarasamersamir               |
 | Sarah Ahmed      | 13007752   | T7             | @Sarah19queen                 |
 | Malak Abdelnabi  | 13002687   | T7             | @malakabdelnabi               |
 | Sarah Samy       | 13006900   | T7             | @sarahhsamyy2000-a11y         |

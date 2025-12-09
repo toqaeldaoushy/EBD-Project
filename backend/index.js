@@ -4,9 +4,8 @@ import cors from "cors";
 
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
-
-dotenv.config();
-
+import transferRoutes from "./routes/transferRoutes.js";
+dotenv.config(); // Load .env variables
 const app = express();
 
 // Middleware
@@ -41,9 +40,14 @@ app.get("/api/users/me", (req, res) => {
   res.json(fakeUser);
 });
 
-// ✅ FAKE UPDATE PROFILE
-app.put("/api/users/update", (req, res) => {
-  const { fullName, email, phone } = req.body;
+// TRANSFER ROUTES
+app.use("/api/transfer", transferRoutes);
+
+// CONNECT TO MONGODB & START SERVER
+async function main() {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("Connected to MongoDB");
 
   if (fullName) fakeUser.fullName = fullName;
   if (email) fakeUser.email = email;
