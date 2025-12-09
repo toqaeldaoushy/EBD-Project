@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import authRoutes from "./routes/authRoutes.js";
-
+import transferRoutes from "./routes/transferRoutes.js";
 dotenv.config(); // Load .env variables
 
 const app = express();
@@ -22,6 +22,9 @@ app.get("/", (req, res) => {
 
 // AUTH ROUTES
 app.use("/api/auth", authRoutes);
+
+// TRANSFER ROUTES
+app.use("/api/transfer", transferRoutes);
 
 // CONNECT TO MONGODB & START SERVER
 async function main() {
