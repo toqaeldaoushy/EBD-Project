@@ -5,6 +5,9 @@ import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import transferRoutes from "./routes/transferRoutes.js";
+import balanceRoutes from "./routes/balanceRoutes.js";
+
+
 dotenv.config(); // Load .env variables
 const app = express();
 
@@ -42,6 +45,11 @@ app.get("/api/users/me", (req, res) => {
 
 // TRANSFER ROUTES
 app.use("/api/transfer", transferRoutes);
+
+// BALANCE ROUTES
+app.use("/api/balance", balanceRoutes);
+
+
 
 // CONNECT TO MONGODB & START SERVER
 async function main() {
