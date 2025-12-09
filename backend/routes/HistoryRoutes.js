@@ -2,7 +2,7 @@ import express from 'express';
 import { getFullTransactionDetails, 
             getTransactionsByType,
             getTransactionSortedByDate
-} from '../helpers/transactionHelper.js';
+} from './helpers/TransactionHelper.js';
 
 const router = express.Router();
 
