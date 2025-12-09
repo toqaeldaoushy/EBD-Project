@@ -1,30 +1,47 @@
-// Cashly Backend - Authentication Setup
-
 import express from "express";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 
 import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 import transferRoutes from "./routes/transferRoutes.js";
 import balanceRoutes from "./routes/balanceRoutes.js";
 
 
 dotenv.config(); // Load .env variables
-
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// HOME ROUTE
-app.get("/", (req, res) => {
-  res.send("API is running");
+// ✅ FAKE USER (OFFLINE MODE)
+const fakeUser = {
+  _id: "123456789",
+  fullName: "Sara Samer",
+  email: "sara@gmail.com",
+  phone: "01000000000",
+  password: "123456"
+};
+
+// ✅ FAKE LOGIN
+app.post("/api/auth/login", (req, res) => {
+  const { email, password } = req.body;
+
+  if (email === fakeUser.email && password === fakeUser.password) {
+    return res.json({
+      token: "FAKE_TOKEN_123",
+      user: fakeUser
+    });
+  }
+
+  return res.status(401).json({ message: "Invalid email or password" });
 });
 
-// AUTH ROUTES
-app.use("/api/auth", authRoutes);
+// ✅ FAKE GET PROFILE
+app.get("/api/users/me", (req, res) => {
+  res.json(fakeUser);
+});
 
 // TRANSFER ROUTES
 app.use("/api/transfer", transferRoutes);
@@ -40,14 +57,23 @@ async function main() {
     await mongoose.connect(process.env.MONGO_URI);
     console.log("Connected to MongoDB");
 
-    const PORT = process.env.PORT || 3000;
+  if (fullName) fakeUser.fullName = fullName;
+  if (email) fakeUser.email = email;
+  if (phone) fakeUser.phone = phone;
 
-    app.listen(PORT, () => {
-      console.log(`Server is running at http://localhost:${PORT}`);
-    });
-  } catch (error) {
-    console.error("Connection error:", error);
-  }
-}
+  res.json({
+    message: "Profile updated successfully",
+    user: fakeUser
+  });
+});
 
-main();
+// ✅ FAKE CHANGE PASSWORD
+app.put("/api/users/change-password", (req, res) => {
+  res.json({ message: "Password changed successfully" });
+});
+
+// ✅ SERVER STARTS 100% GUARANTEED
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`✅ Offline server running at http://localhost:${PORT}`);
+});
