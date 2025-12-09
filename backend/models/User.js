@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId, 
     ref: "Account",
     required: false   // You may assign it later after account creation
-  }
+  },
 
   balance: {
     type: Number,
