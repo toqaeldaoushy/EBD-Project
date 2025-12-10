@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
+  "description": "**Course:** Electronic Business Development (BINF 503)  \r **Semester:** Winter 2025  \r **Instructor:** Dr. Nourhan Hamdi  \r **Teaching Assistants:** Mr. Nour Gaser, Mr. Omar Alaa",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

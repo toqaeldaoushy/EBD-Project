@@ -9,6 +9,8 @@ import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import transferRoutes from "./routes/transferRoutes.js";
 import historyRoutes from "./routes/HistoryRoutes.js";
+import cardRoutes from "./routes/cardRoutes.js";
+
 
 dotenv.config(); // Load .env variables
 
@@ -34,6 +36,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/transfer", transferRoutes);
 app.use("/api/history", historyRoutes);
+app.use("/api/card", cardRoutes);
 
 // -------------------------------
 // CONNECT TO MONGO + START SERVER
