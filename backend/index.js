@@ -33,6 +33,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/transfer", transferRoutes);
+app.use("/api/history", historyRoutes);
 
 // -------------------------------
 // CONNECT TO MONGO + START SERVER

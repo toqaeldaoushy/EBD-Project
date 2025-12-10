@@ -1,6 +1,8 @@
 import express from 'express';
-import { getFullTransactionDetails, getTransactionsByType, getTransactionSortedByDate } 
-from '..helpers/TransactionHelper.js';
+import { getFullTransactionDetails, 
+    getTransactionsByType, 
+    getTransactionSortedByDate } 
+from '../helpers/TransactionHelper.js';
 
 
 
