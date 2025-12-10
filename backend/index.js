@@ -8,6 +8,7 @@ import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import transferRoutes from "./routes/transferRoutes.js";
+import historyRoutes from "./routes/HistoryRoutes.js";
 
 dotenv.config(); // Load .env variables
 
