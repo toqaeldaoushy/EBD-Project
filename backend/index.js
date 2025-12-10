@@ -26,6 +26,10 @@ app.use("/api/auth", authRoutes);
 // TRANSFER ROUTES
 app.use("/api/transfer", transferRoutes);
 
+// CARD ROUTES
+const cardRoutes = require("./routes/cardRoutes");
+app.use("/api/card", cardRoutes);
+
 // CONNECT TO MONGODB & START SERVER
 async function main() {
   try {
@@ -41,5 +45,6 @@ async function main() {
     console.error("Connection error:", error);
   }
 }
+
 
 main();
