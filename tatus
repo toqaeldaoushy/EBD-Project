@@ -1,0 +1,28 @@
+* [33ma04ad63[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m added wallet dashboard routes
+[31m|[m *   [33m5e10a11[m[33m ([m[1;31morigin/balance-dashboard[m[33m, [m[1;32mbalance-dashboard[m[33m)[m t pull origin main Merge branch 'main' of https://github.com/toqaeldaoushy/EBD-Project
+[31m|[m [32m|[m[31m\[m  
+[31m|[m [32m|[m[31m/[m  
+[31m|[m[31m/[m[32m|[m   
+* [32m|[m   [33m0b9e633[m Merge pull request #1 from toqaeldaoushy/sara-profile
+[34m|[m[35m\[m [32m\[m  
+[34m|[m * [32m\[m   [33m136c13e[m[33m ([m[1;31morigin/sara-profile[m[33m)[m Merge branch 'main' into sara-profile
+[34m|[m [36m|[m[34m\[m [32m\[m  
+[34m|[m [36m|[m[34m/[m [32m/[m  
+[34m|[m[34m/[m[36m|[m [32m|[m   
+[34m|[m * [32m|[m [33m56e1ed5[m User Profile Management feature completed
+[34m|[m * [32m|[m [33m7c03f0b[m Add user profile management (update profile + change password)
+[34m|[m [1;31m|[m * [33m6c0d478[m added wallet dashboard routes
+[34m|[m [1;31m|[m[34m/[m  
+[34m|[m[34m/[m[1;31m|[m   
+* [1;31m|[m [33mbad37c6[m Update README.md
+* [1;31m|[m [33m80572af[m Adjusted
+* [1;31m|[m [33m16fa0c5[m Alya's Feature
+[1;31m|[m[1;31m/[m  
+* [33m8ed01a7[m Update authHelpers.js
+*   [33m18283ef[m Merge branch 'main' of https://github.com/toqaeldaoushy/EBD-Project
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33m9f43c81[m Recreate README.md
+* [1;33m|[m [33ma67aa58[m editing helper method - T
+[1;33m|[m[1;33m/[m  
+* [33me862458[m Full project upload
+* [33mf0c392e[m Initial backend upload
