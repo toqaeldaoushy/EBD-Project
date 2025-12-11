@@ -10,6 +10,9 @@ import userRoutes from "./routes/userRoutes.js";
 import transferRoutes from "./routes/transferRoutes.js";
 import historyRoutes from "./routes/HistoryRoutes.js";
 import cardRoutes from "./routes/cardRoutes.js";
+import balanceRoutes from "./routes/balanceRoutes.js";
+
+
 
 
 dotenv.config(); // Load .env variables
@@ -37,6 +40,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/transfer", transferRoutes);
 app.use("/api/history", historyRoutes);
 app.use("/api/card", cardRoutes);
+app.use("/api/balance", balanceRoutes); 
+
 
 // -------------------------------
 // CONNECT TO MONGO + START SERVER
