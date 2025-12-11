@@ -1,12 +1,12 @@
 import express from "express";
-import authMiddleware from "../middleware/authMiddleware.js";
+import {protect} from "../middleware/authMiddleware.js";
 import User from "../models/User.js";
 import Transaction from "../models/Transaction.js";
 
 const router = express.Router();
 
 // GET wallet balance
-router.get("/balance", authMiddleware, async (req, res) => {
+router.get("/balance", protect, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select("balance");
         res.json({ balance: user.balance });
@@ -16,7 +16,7 @@ router.get("/balance", authMiddleware, async (req, res) => {
 });
 
 // GET recent transactions (last 5)
-router.get("/recent-transactions", authMiddleware, async (req, res) => {
+router.get("/recent-transactions", protect, async (req, res) => {
     try {
         const transactions = await Transaction.find({ userId: req.user.id })
             .sort({ date: -1 })
