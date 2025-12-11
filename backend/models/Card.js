@@ -1,27 +1,32 @@
 import mongoose from "mongoose";
 
 const CardSchema = new mongoose.Schema({
-    UserID:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        requires: true
-    },
-    Last4:{
-        type: String,
-        required: true
-    },
-    Brand:{
-        type: String,
-        default: "Visa"
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true
+  },
 
-    },
-    Status:{
-        type: String,
-        default: "active"
-    },
-    CreatedAt:{
-        type: Date,
-        default: Date.now
-    }
+  last4: {
+    type: String,
+    required: true
+  },
+
+  brand: {
+    type: String,
+    default: "Visa"
+  },
+
+  status: {
+    type: String,
+    default: "active"
+  },
+
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 });
-module.exports= mongoose.model("Card", CardSchema);
+
+const Card = mongoose.model("Card", CardSchema);
+export default Card;
