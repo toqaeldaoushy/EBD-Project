@@ -89,16 +89,23 @@ export const getTransactionsByType = async (userId, type) => {
 };
 
 export const getTransactionSortedByDate = async (userId, sortOrder = "desc") => {
-    if (!["asc", "desc"].includes(sortOrder)) {
-        throw new Error("Invalid sort order");
+    try {
+        if (!["asc", "desc"].includes(sortOrder)) {
+            throw new Error("Invalid sort order");
+        }
+
+        const transactions = await Transaction.find({
+            $or: [{ senderId: userId }, { receiverId: userId }],
+        }).sort({ date: sortOrder === "asc" ? 1 : -1 });
+
+        const userMap = await loadUsersMap(transactions);
+
+        return await Promise.all(
+            transactions.map(tx => formatTransaction(tx, userMap))
+        );
+
+    } catch (error) {
+        // Create a clear and consistent error message
+        throw new Error(`Failed to get sorted transactions: ${error.message}`);
     }
-    
-    const transactions = await Transaction.find({
-        $or: [{ senderId: userId }, { receiverId: userId }],
-    }).sort({ date: sortOrder === "asc" ? 1 : -1 });
-    
-    const userMap = await loadUsersMap(transactions);
-    return await Promise.all(
-        transactions.map(tx => formatTransaction(tx, userMap))
-    );
 };
