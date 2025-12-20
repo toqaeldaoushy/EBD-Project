@@ -1,14 +1,27 @@
-import React from 'react';
+export default function HistoryCard({ transaction }) {
+  const isReceived = transaction.type === "receive";
 
-const historyCard = ({ transaction }) => {
   return (
-    <div className="transaction-card">
-      <div className="transaction-date">{transaction.date}</div>
-      <div className="transaction-description">{transaction.description}</div>
-      <div className="transaction-amount">{transaction.amount}</div>
-      <div className="transaction-type">{transaction.type}</div>
+    <div className={`history-card ${isReceived ? "received" : "sent"}`}>
+      <div className="card-header">
+        <h3>{isReceived ? "Received from" : "Sent to"}</h3>
+        <span className={`amount ${isReceived ? "positive" : "negative"}`}>
+          {isReceived ? "+" : "-"}${transaction.amount}
+        </span>
+      </div>
+
+      <p className="person-name">
+        {isReceived ? transaction.senderName : transaction.receiverName}
+      </p>
+
+      <p className="description">{transaction.description}</p>
+
+      <div className="card-footer">
+        <span className="date">
+          {new Date(transaction.date).toLocaleDateString()}
+        </span>
+        <span className="type">{transaction.type}</span>
+      </div>
     </div>
   );
-};
-
-export default historyCard;
+}

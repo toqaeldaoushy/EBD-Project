@@ -7,6 +7,7 @@ function Sidebar() {
       <ul>
         <li><Link to="/dashboard">Home</Link></li>
         <li><Link to="/cards">Card Management</Link></li>
+        <li><Link to="/history">Transaction History</Link></li>
       </ul>
     </aside>
   );

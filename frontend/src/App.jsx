@@ -8,7 +8,7 @@ import RegisterPage from "./pages/RegisterPage";
 import Profile from "./pages/Profile";
 import DashboardPage from "./pages/dashboard";
 import CardManagementPage from "./pages/CardManagementPage";
-import TransactionHistoryPage from "./pages/history";
+import TransactionHistoryPage from "./pages/historyPage/history";
 
 // Auth guard
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -45,7 +45,15 @@ function App() {
         }
       />
 
-      
+      <Route
+        path="/history"
+        element={
+          <ProtectedRoute>
+            <TransactionHistoryPage />
+          </ProtectedRoute>
+        }
+      />
+
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
