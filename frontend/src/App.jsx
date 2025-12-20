@@ -6,7 +6,8 @@ import RegisterPage from "./pages/RegisterPage";
 
 // Other team pages
 import Profile from "./pages/Profile";
-import DashboardPage from "./pages/DashboardPage";
+import DashboardPage from "./pages/dashboard";
+import CardManagementPage from "./pages/CardManagementPage";
 
 // Auth guard
 import ProtectedRoute from "./components/ProtectedRoute";

@@ -5,10 +5,10 @@ import User from "../models/User.js";
 const protect = async (req, res, next) => {
   let token;
 
-  // Check if the token exists in the Authorization header (CashlyToken <token>)
+  // Check if the token exists in the Authorization header (Bearer <token>)
   if (
     req.headers.authorization &&
-    req.headers.authorization.startsWith("CashlyToken")
+    req.headers.authorization.startsWith("Bearer")
   ) {
     try {
 

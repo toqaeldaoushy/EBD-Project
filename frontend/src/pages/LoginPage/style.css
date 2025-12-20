@@ -1,0 +1,167 @@
+/* =========================
+   LOGIN LAYOUT
+========================= */
+.login-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.cashly-logo {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 12px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25));
+}
+
+
+
+/* LEFT IMAGE SIDE */
+.login-left {
+  
+  flex: 1.2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* RIGHT FORM SIDE */
+.login-right {
+  flex: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+
+/* =========================
+   CARD
+========================= */
+.login-card {
+  width: 100%;
+  max-width: 360px;
+}
+
+/* BRAND */
+.brand {
+  color: var(--green-solid); /* fallback */
+  background: var(--green-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+
+/* TITLE */
+.login-card h2 {
+  color: var(--green-solid);
+  background: var(--green-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.login-card p {
+  margin-bottom: 20px;
+}
+
+/* =========================
+   FORM
+========================= */
+.login-card label {
+  font-size: 13px;
+  color: #99cbab;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.login-card input {
+  width: 100%;
+   color: #99cbab;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  border: none;
+  font-size: 14px;
+  outline: none;
+}
+
+/* EMAIL */
+.input-email {
+  background: var(--snow-gradient);
+  border-left: 4px solid var(--green-solid);
+  color: #eceaea;
+  caret-color: var(--green-solid);
+}
+
+.input-email::placeholder {
+  color: #4b6f5c;
+}
+
+/* PASSWORD */
+.input-password {
+  background: var(--lavender-gradient);
+  border-left: 4px solid var(--red-solid);
+   color: #99cbab;
+  caret-color: var(--red-solid);
+}
+
+.input-password::placeholder {
+  color: var(--lavender-solid);
+  opacity: 0.7;
+}
+
+/* FOCUS */
+.input-email:focus,
+.input-password:focus {
+  box-shadow: 0 0 0 2px rgba(46, 139, 87, 0.25);
+}
+
+/* =========================
+   BUTTON
+========================= */
+.login-card button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: var(--red-gradient);
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* =========================
+   LINKS
+========================= */
+.link {
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link a {
+  color: var(--green-solid);
+  font-weight: bold;
+}
+
+/* =========================
+   ERROR
+========================= */
+.error {
+  background: #ffe9ec;
+  color: var(--red-solid);
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}

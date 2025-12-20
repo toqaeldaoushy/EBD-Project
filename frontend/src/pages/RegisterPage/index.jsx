@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { loginApi } from "../../api/auth";
-import { saveToken } from "../../utils/authStorage";
+import { registerApi } from "../../api/auth";
 import "./style.css";
 import logo from "../../assets/cashly-logo.png";
 
-
-export default function LoginPage() {
+export default function RegisterPage() {
   const navigate = useNavigate();
 
+  const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,11 +21,10 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const data = await loginApi({ email, password });
-      saveToken(data.token);
-      navigate("/dashboard");
+      await registerApi({ fullName, phone, email, password });
+      navigate("/login");
     } catch (err) {
-      setError(err?.response?.data?.message || "Login failed");
+      setError(err?.response?.data?.message || "Registration failed");
     } finally {
       setLoading(false);
     }
@@ -35,54 +34,63 @@ export default function LoginPage() {
     <div className="auth-bg">
       <div className="auth-shell">
         <div className="auth-left">
-           
           <h1>Cashly</h1>
-          <p>Welcome to your digital wallet.</p>
-           <img src={logo} alt="Cashly Logo" className="cashly-logo" />
+          <p>Create your wallet account in seconds.</p>
+          <img src={logo} alt="Cashly Logo" className="cashly-logo" />
 
-          {/* Rocket + Dollar smoke (CSS-based) */}
           <div className="rocket-area">
-        
-            <div className="money-smoke">
-          
-            </div>
           </div>
         </div>
 
-        {/* ✅ Buttons only on ONE side (right side) */}
         <div className="auth-right">
           <div className="card">
-            <h2>User Login</h2>
-            <p className="sub">Welcome back.</p>
+            <h2>Create Account</h2>
+            <p className="sub">Start using Cashly.</p>
 
             <form onSubmit={onSubmit}>
+              <label>Full Name</label>
+              <input
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder="Enter your full name"
+                required
+              />
+
+              <label>Phone</label>
+              <input
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="01xxxxxxxxx"
+                required
+              />
+
               <label>Email</label>
               <input
                 type="email"
-                placeholder="example@mail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="example@mail.com"
                 required
               />
 
               <label>Password</label>
               <input
                 type="password"
-                placeholder="********"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder="********"
                 required
               />
 
               {error ? <div className="error">{error}</div> : null}
 
               <button className="btn" disabled={loading}>
-                {loading ? "Logging in..." : "Login"}
+                {loading ? "Creating..." : "Register"}
               </button>
             </form>
 
             <div className="bottom-links">
-              <span>New here?</span> <Link to="/register">Create Account</Link>
+              <span>Already have an account?</span> <Link to="/login">Login</Link>
             </div>
           </div>
         </div>
