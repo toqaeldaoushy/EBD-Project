@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RegisterPage";
 import Profile from "./pages/Profile";
 import DashboardPage from "./pages/dashboard";
 import CardManagementPage from "./pages/CardManagementPage";
+import TransactionHistoryPage from "./pages/history";
 
 // Auth guard
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -23,6 +24,7 @@ function App() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/cards" element={<CardManagementPage />} />
+      <Route path="/history" element={<TransactionHistoryPage />} />
 
       {/* PROTECTED ROUTES */}
       <Route
@@ -43,6 +45,7 @@ function App() {
         }
       />
 
+      
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
