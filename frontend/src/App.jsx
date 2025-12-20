@@ -6,7 +6,7 @@ import RegisterPage from "./pages/RegisterPage";
 
 // Other team pages
 import Profile from "./pages/Profile";
-import DashboardPage from "./pages/dashboard";
+import DashboardPage from "./pages/DashboardPage";
 import CardManagementPage from "./pages/CardManagementPage";
 import TransactionHistoryPage from "./pages/historyPage/history";
 
