@@ -31,7 +31,7 @@ const formatTransaction =  (tx, usersMap) => {
     const receiver = (receiverId && usersMap[receiverId]) || { fullName: "Unknown Receiver" };
 
     return {
-        id: tx._id.toString(),
+        _id: tx._id.toString(),
 
         senderId,
         senderName: sender.fullName,

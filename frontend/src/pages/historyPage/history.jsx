@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
-import HistoryCard from "../../components/TransactionHistory/historyCard.jsx";
+import { useNavigate } from "react-router-dom";
+import HistoryCard from "../../components/TransactionHistory/historycard.jsx";
 import HistoryFilter from "../../components/TransactionHistory/historyFilter.jsx";
+import api from "../../api/client";
+import { getToken } from "../../utils/authStorage";
 import "./history.css";
 import logo from "../../assets/cashly-logo.png";
 
-
 const TransactionHistoryPage = () => {
+  const navigate = useNavigate();
   const [transactions, setTransactions] = useState([]);
   const [filteredTransactions, setFilteredTransactions] = useState([]);
   const [filter, setFilter] = useState("all");
@@ -13,37 +16,73 @@ const TransactionHistoryPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const userId = localStorage.getItem("userId");
-
-  const fetchTransactions = async () => {
-    if (!userId) {
-      setError("User not logged in");
-      setLoading(false);
-      return;
-    }
-
+  // ✅ Helper function to decode JWT and extract userId
+  const extractUserIdFromToken = (token) => {
     try {
-      setLoading(true);
-      const response = await fetch(
-        `http://localhost:3000/api/history/full/${userId}`
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split('')
+          .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+          .join('')
       );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch transactions");
-      }
-
-      const data = await response.json();
-      setTransactions(data);
-      setError(null);
+      const decoded = JSON.parse(jsonPayload);
+      return decoded.id || decoded.userId || decoded._id;
     } catch (err) {
-      setError(err.message);
-      console.error("Error fetching transactions:", err);
-    } finally {
-      setLoading(false);
+      console.error("Error decoding token:", err);
+      return null;
     }
   };
 
-  const filterAndSortTransactions = () => {
+  useEffect(() => {
+    // ✅ Get token using getToken() - matches your login page
+    const token = getToken();
+    
+    if (!token) {
+      setError("User not logged in");
+      setLoading(false);
+      navigate("/login", { replace: true });
+      return;
+    }
+
+    // ✅ Extract userId from the token JWT payload
+    const userId = extractUserIdFromToken(token);
+    
+    if (!userId) {
+      setError("Invalid token");
+      setLoading(false);
+      navigate("/login", { replace: true });
+      return;
+    }
+
+    // ✅ Fetch transactions
+    const fetchTransactions = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        // api client will automatically add the Bearer token from getToken()
+        const response = await api.get(`/history/full/${userId}`);
+        
+        setTransactions(response.data || []);
+      } catch (err) {
+        console.error("Error fetching transactions:", err);
+        setError(err.response?.data?.message || err.message || "Failed to fetch transactions");
+        
+        if (err.response?.status === 401) {
+          navigate("/login", { replace: true });
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTransactions();
+  }, [navigate]);
+
+  // ✅ Filter and sort transactions
+  useEffect(() => {
     let filtered = [...transactions];
 
     if (filter !== "all") {
@@ -57,14 +96,6 @@ const TransactionHistoryPage = () => {
     });
 
     setFilteredTransactions(filtered);
-  };
-
-  useEffect(() => {
-    fetchTransactions();
-  }, [userId]);
-
-  useEffect(() => {
-    filterAndSortTransactions();
   }, [transactions, filter, sort]);
 
   return (
@@ -111,7 +142,7 @@ const TransactionHistoryPage = () => {
         {!loading && !error && filteredTransactions.length > 0 && (
           <div className="cards-container">
             {filteredTransactions.map((tx) => (
-              <HistoryCard key={tx.id} transaction={tx} />
+              <HistoryCard key={tx._id} transaction={tx} />
             ))}
           </div>
         )}
@@ -120,4 +151,4 @@ const TransactionHistoryPage = () => {
   );
 };
 
-export default TransactionHistoryPage;
+export default TransactionHistoryPage; 
