@@ -1,17 +1,20 @@
 function CardItem({ card }) {
   return (
-    <div>
+    <div className="card-item">
       <p><strong>Brand:</strong> {card.brand}</p>
-      <p><strong>Last 4 Digits:</strong> **** {card.last4}</p>
-     <p className={`card-status ${card.status}`}>
-  {card.status}
-</p>
-
+      <p><strong>Card:</strong> **** {card.last4}</p>
+      <p className={`card-status ${card.status}`}>
+        Status: {card.status}
+      </p>
 
       {card.status === "active" ? (
-        <button>Lock Card</button>
+        <button className="card-button">
+          Lock Card
+        </button>
       ) : (
-        <button>Unlock Card</button>
+        <button className="card-button secondary">
+          Unlock Card
+        </button>
       )}
     </div>
   );
