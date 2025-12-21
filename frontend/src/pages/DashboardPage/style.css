@@ -3,7 +3,7 @@
 ========================= */
 .dashboard-navbar {
   height: 70px;
-  width: 90%;
+  width: 100%;
   background: rgba(160, 36, 36, 0.92);
   backdrop-filter: blur(12px);
   display: flex;

@@ -37,16 +37,9 @@ export default function LoginPage() {
         <div className="auth-left">
            
           <h1>Cashly</h1>
-          <p>Welcome to your digital wallet.</p>
+          <h2>Welcome to your digital wallet.</h2>
            <img src={logo} alt="Cashly Logo" className="cashly-logo" />
 
-          {/* Rocket + Dollar smoke (CSS-based) */}
-          <div className="rocket-area">
-        
-            <div className="money-smoke">
-          
-            </div>
-          </div>
         </div>
 
         {/* ✅ Buttons only on ONE side (right side) */}

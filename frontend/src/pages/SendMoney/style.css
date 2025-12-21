@@ -147,3 +147,31 @@
   justify-content: center;
   align-items: center;
 }
+
+.avatar-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+  padding: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.avatar-letter {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.contact-name {
+  color: var(--green-solid);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.contact-phone {
+  font-size: 12px;
+  color: #777;
+}
+

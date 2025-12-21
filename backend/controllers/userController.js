@@ -63,3 +63,24 @@ export const changePassword = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
+
+
+
+export const getRecipients = async (req, res) => {
+  try {
+    const users = await User.find(
+      { _id: { $ne: req.user._id } },
+      "fullName phone"
+    );
+
+    res.json(
+      users.map(u => ({
+        _id: u._id,
+        fullName: u.fullName, // ✅ EXISTS
+        phone: u.phone
+      }))
+    );
+  } catch (error) {
+    res.status(500).json({ message: "Failed to load recipients" });
+  }
+};

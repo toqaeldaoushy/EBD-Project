@@ -5,7 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 
 // Other team pages
-import Profile from "./pages/Profile";
+import Profile from "./pages/profilePage/Profile";
 import DashboardPage from "./pages/DashboardPage";
 import CardManagementPage from "./pages/CardManagementPage";
 import TransactionHistoryPage from "./pages/historyPage/history";
@@ -27,6 +27,7 @@ function App() {
       <Route path="/cards" element={<CardManagementPage />} />
       <Route path="/history" element={<TransactionHistoryPage />} />
       <Route path="/send-money" element={<SendMoney />} />
+      <Route path="/profile" element={<Profile />} />
 
       {/* PROTECTED ROUTES */}
       <Route
@@ -54,7 +55,14 @@ function App() {
         </ProtectedRoute>
       }
     />
-
+        <Route
+        path="/cards"
+        element={ 
+          <ProtectedRoute>
+            <CardManagementPage />
+          </ProtectedRoute>
+        }
+      />
 
       <Route
         path="/history"
