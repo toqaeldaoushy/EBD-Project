@@ -11,7 +11,7 @@ const AmountEntry = ({ recipient, amount, setAmount, onNext, onBack }) => {
 
     return (
         <div style={{ textAlign: 'center' }}>
-            <div className="input-password" style={{ padding: '20px', borderRadius: '15px', marginBottom: '20px' }}>
+            <div  style={{ padding: '20px', borderRadius: '15px', marginBottom: '20px' , background: 'var(--snow-gradient)' , color: 'var(--red-solid)'}}>
                 <p>Sending to {recipient.name}</p>
                 <h1 style={{ color: 'var(--red-solid)', fontSize: '36px' }}>${amount || '0'}</h1>
             </div>
@@ -19,17 +19,17 @@ const AmountEntry = ({ recipient, amount, setAmount, onNext, onBack }) => {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
                 {keys.map(k => (
                     <button key={k} onClick={() => handleKey(k)} 
-                            style={{ padding: '15px', border: 'none', background: 'var(--snow-gradient)', borderRadius: '10px', fontWeight: 'bold', cursor: 'pointer' }}>
+                            style={{ padding: '15px', border: 'none', background: 'var(--snow-gradient)', borderRadius: '10px', fontWeight: 'bold', cursor: 'pointer', color: 'var(--red-solid)', }}>
                         {k}
                     </button>
                 ))}
             </div>
 
             <button onClick={onNext} disabled={!amount} 
-                    style={{ marginTop: '20px', width: '100%', padding: '15px', background: 'var(--green-gradient)', color: 'white', border: 'none', borderRadius: '999px', fontWeight: 'bold' }}>
+                    style={{ marginTop: '20px', width: '100%', padding: '15px', background: 'white', color: 'var(--red-solid)', border: 'none', borderRadius: '999px', fontWeight: 'bold' }}>
                 Continue
             </button>
-            <p onClick={onBack} style={{ marginTop: '15px', cursor: 'pointer', color: 'var(--text-muted)' }}>← Go Back</p>
+            <p onClick={onBack} style={{ marginTop: '15px', cursor: 'pointer', color: 'white' }}>← Go Back</p>
         </div>
     );
 };

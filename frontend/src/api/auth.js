@@ -1,13 +1,20 @@
-import api from "./client";
+import axios from "axios";
 
-export async function registerApi(payload) {
-  // payload: { fullName, email, password, phone }
-  const res = await api.post("/api/auth/register", payload);
+const BASE_URL = "http://localhost:3000/api/auth";
+
+export async function loginApi(credentials) {
+  const res = await axios.post(
+    `${BASE_URL}/login`,
+    credentials
+  );
+
   return res.data;
 }
 
-export async function loginApi(payload) {
-  // payload: { email, password }
-  const res = await api.post("/api/auth/login", payload);
-  return res.data; // { message, token }
+export async function registerApi(userData) {
+  const res = await axios.post(
+    `${BASE_URL}/register`,
+    userData
+  );
+  return res.data;
 }

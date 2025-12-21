@@ -42,12 +42,12 @@ const TransferConfirmation = ({ recipient, amount, onBack }) => {
             <button 
                 onClick={handleConfirm} 
                 className="input-email" 
-                style={{ width: '100%', padding: '15px', background: 'var(--green-gradient)', color: 'white', border: 'none', borderRadius: '999px', fontWeight: 'bold', cursor: 'pointer' }}
+                style={{ width: '100%', padding: '15px', background: 'white', color: 'var(--red-solid)', border: 'none', borderRadius: '999px', fontWeight: 'bold', cursor: 'pointer' }}
             >
                 Confirm & Send
             </button>
             
-            <p onClick={onBack} style={{ marginTop: '15px', cursor: 'pointer', color: 'var(--text-muted)' }}>
+            <p onClick={onBack} style={{ marginTop: '15px', cursor: 'pointer', color: 'white' }}>
                 Edit Amount
             </p>
         </div>

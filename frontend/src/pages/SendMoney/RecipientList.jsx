@@ -10,7 +10,7 @@ const RecipientList = ({ onSelect }) => {
 
     return (
         <div>
-            <p style={{ marginBottom: '20px', textAlign: 'center' }}>Who are you sending money to?</p>
+            <p style={{ marginBottom: '20px', textAlign: 'center' , color: '#ffffffff'}}>Who are you sending money to?</p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
                 {contacts.map(user => (
                     <div key={user.id} onClick={() => onSelect(user)} className="input-email" 
