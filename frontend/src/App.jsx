@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import DashboardPage from "./pages/DashboardPage";
 import CardManagementPage from "./pages/CardManagementPage";
 import TransactionHistoryPage from "./pages/historyPage/history";
+import SendMoney from "./pages/SendMoney/SendMoney";
 
 // Auth guard
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -25,6 +26,7 @@ function App() {
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/cards" element={<CardManagementPage />} />
       <Route path="/history" element={<TransactionHistoryPage />} />
+      <Route path="/send-money" element={<SendMoney />} />
 
       {/* PROTECTED ROUTES */}
       <Route
@@ -44,6 +46,15 @@ function App() {
           </ProtectedRoute>
         }
       />
+      <Route
+      path="/send-money"
+      element={
+        <ProtectedRoute>
+          <SendMoney />
+        </ProtectedRoute>
+      }
+    />
+
 
       <Route
         path="/history"

@@ -45,8 +45,8 @@ export default function DashboardPage() {
 
   <div className="nav-center">
     <button onClick={() => navigate("/dashboard")}>Dashboard</button>
-    <button onClick={() => navigate("/send")}>Send</button>
-    <button onClick={() => navigate("/transactions")}>History</button>
+    <button onClick={() => navigate("/send-money")}>Send</button>
+    <button onClick={() => navigate("/history")}>History</button>
     <button onClick={() => navigate("/card")}>Card</button>
     <button onClick={() => navigate("/profile")}>Profile</button>
   </div>
@@ -81,10 +81,10 @@ export default function DashboardPage() {
 
         {/* ACTIONS */}
         <div className="dashboard-actions">
-          <button onClick={() => navigate("/send")}>Send</button>
-          <button onClick={() => navigate("/transactions")}>History</button>
+          <button onClick={() => navigate("/send-money")}>Send</button>
           <button onClick={() => navigate("/card")}>Card</button>
           <button onClick={() => navigate("/profile")}>Profile</button>
+          <button onClick={() => navigate("/history")}>History</button>
         </div>
 
         {/* TRANSACTIONS */}

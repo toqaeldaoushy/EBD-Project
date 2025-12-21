@@ -1,0 +1,134 @@
+/* =========================
+   ALYA'S SEND MONEY STYLES
+========================= */
+
+/* Use the brand colors from App.css */
+.send-money-card {
+    text-align: center;
+}
+
+/* 1. Recipient Selection Styles */
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.contact-item {
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 16px;
+    background: var(--snow-gradient);
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--green-solid);
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.1);
+}
+
+.avatar-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+    padding: 5px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.contact-name {
+    color: var(--green-solid);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* 2. Amount Entry Styles */
+.amount-box {
+    background: var(--lavender-gradient);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--red-solid);
+}
+
+.amount-text {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--red-solid);
+    margin: 10px 0;
+}
+
+/* 3. Custom Number Pad */
+.numpad-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.num-btn {
+    background: white;
+    border: 1px solid #eee;
+    padding: 18px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+    color: var(--green-solid);
+}
+
+.num-btn:active {
+    background: var(--snow-gradient);
+    transform: scale(0.95);
+}
+
+.num-btn.delete {
+    color: var(--red-solid);
+}
+
+/* 4. Confirmation View */
+.confirm-box {
+    background: var(--snow-gradient);
+    padding: 30px;
+    border-radius: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.confirm-avatar {
+    width: 80px;
+    margin-bottom: 15px;
+    border: 3px solid var(--green-solid);
+    border-radius: 50%;
+    padding: 5px;
+}
+
+/* 5. Buttons (Using your colleague's style) */
+.btn-primary {
+    background: var(--green-gradient);
+    color: white;
+    width: 100%;
+    padding: 15px;
+    border-radius: 999px;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
+}
+
+.btn-secondary {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+}
