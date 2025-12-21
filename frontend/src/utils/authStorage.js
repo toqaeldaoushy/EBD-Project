@@ -1,11 +1,11 @@
 export function saveToken(token) {
-  localStorage.setItem("cashly_token", token);
+  localStorage.setItem("Bearer", token);
 }
 
 export function getToken() {
-  return localStorage.getItem("cashly_token");
+  return localStorage.getItem("Bearer");
 }
 
 export function logout() {
-  localStorage.removeItem("cashly_token");
+  localStorage.removeItem("Bearer");
 }

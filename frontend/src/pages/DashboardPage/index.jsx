@@ -11,59 +11,55 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchDashboard() {
+    const fetchDashboard = async () => {
       try {
-        // ✅ Correct routes
+        // ✅ Token is injected automatically by api client
         const balanceRes = await api.get("/balance/balance");
         const txRes = await api.get("/balance/recent-transactions");
 
-        setBalance(balanceRes.data.balance);
-        setTransactions(txRes.data);
+        setBalance(balanceRes.data.balance); // ✅ REAL DB VALUE
+        setTransactions(txRes.data || []);
       } catch (error) {
         console.error("Dashboard fetch error:", error);
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     fetchDashboard();
   }, []);
 
   if (loading) {
-    return <div className="dashboard-bg">Loading...</div>;
+    return <div className="dashboard-bg">Loading dashboard...</div>;
   }
 
   return (
     <div className="dashboard-bg">
       <div className="dashboard-shell">
 
-        {/* HEADER */}
+        {/* 🔝 NAVBAR */}
         <nav className="dashboard-navbar">
-  <div className="nav-left">
-    <span className="nav-logo">Cashly</span>
-  </div>
+          <div className="nav-left">
+            <span className="nav-logo">Cashly</span>
+          </div>
 
-  <div className="nav-center">
-    <button onClick={() => navigate("/dashboard")}>Dashboard</button>
-    <button onClick={() => navigate("/send-money")}>Send</button>
-    <button onClick={() => navigate("/history")}>History</button>
-    <button onClick={() => navigate("/card")}>Card</button>
-    <button onClick={() => navigate("/profile")}>Profile</button>
-  </div>
+          <div className="nav-center">
+            <button onClick={() => navigate("/dashboard")}>Dashboard</button>
+            <button onClick={() => navigate("/send-money")}>Send</button>
+            <button onClick={() => navigate("/history")}>History</button>
+            <button onClick={() => navigate("/card")}>Card</button>
+            <button onClick={() => navigate("/profile")}>Profile</button>
+          </div>
 
-  <div className="nav-right">
-    <button
-      className="logout-btn"
-      onClick={() => navigate("/login")}
-    >
-      Logout
-    </button>
-  </div>
-</nav>
+          <div className="nav-right">
+            <button className="logout-btn" onClick={() => navigate("/login")}>
+              Logout
+            </button>
+          </div>
+        </nav>
 
-
-        {/* BALANCE */}
-        <div className="dashboard-balance">
+        {/* 💰 BALANCE */}
+        <section className="dashboard-balance">
           <span>Total Balance</span>
           <h2>{balance} EGP</h2>
 
@@ -77,18 +73,18 @@ export default function DashboardPage() {
               <p>0 EGP</p>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* ACTIONS */}
-        <div className="dashboard-actions">
+        {/* ⚡ ACTIONS */}
+        <section className="dashboard-actions">
           <button onClick={() => navigate("/send-money")}>Send</button>
+          <button onClick={() => navigate("/history")}>History</button>
           <button onClick={() => navigate("/card")}>Card</button>
           <button onClick={() => navigate("/profile")}>Profile</button>
-          <button onClick={() => navigate("/history")}>History</button>
-        </div>
+        </section>
 
-        {/* TRANSACTIONS */}
-        <div className="dashboard-section">
+        {/* 📄 RECENT TRANSACTIONS */}
+        <section className="dashboard-section">
           <h3>Recent Activity</h3>
 
           {transactions.length === 0 && (
@@ -101,8 +97,8 @@ export default function DashboardPage() {
             <div key={tx._id} className="transaction">
               <span>
                 {tx.type === "send"
-                  ? `Sent ${tx.amount} EGP`
-                  : `Received ${tx.amount} EGP`}
+                  ? `Sent to ${tx.toPhone || "user"}`
+                  : `Received from ${tx.fromPhone || "user"}`}
               </span>
 
               <span
@@ -113,7 +109,7 @@ export default function DashboardPage() {
               </span>
             </div>
           ))}
-        </div>
+        </section>
 
       </div>
     </div>
