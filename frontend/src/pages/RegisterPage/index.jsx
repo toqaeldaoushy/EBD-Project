@@ -38,8 +38,7 @@ export default function RegisterPage() {
           <p>Create your wallet account in seconds.</p>
           <img src={logo} alt="Cashly Logo" className="cashly-logo" />
 
-          <div className="rocket-area">
-          </div>
+        
         </div>
 
         <div className="auth-right">

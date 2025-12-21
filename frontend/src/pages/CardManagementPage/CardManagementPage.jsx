@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Sidebar from "../components/Sidebar";
-import CardItem from "../components/CardItem";
-import { cards as initialCards } from "../data/cards";
+import Sidebar from "../../components/Sidebar";
+import CardItem from "../../components/CardItem";
+import { cards as initialCards } from "../../data/cards";
 import "./CardManagementPage.css";
 
 function CardManagementPage() {
