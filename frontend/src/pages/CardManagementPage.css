@@ -61,3 +61,34 @@
 .card-button:hover {
   opacity: 0.9;
 }
+.card-item p {
+  line-height: 1.6;
+}
+.card-form {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-form h3 {
+  margin-bottom: 16px;
+  color: #4b2ca3;
+}
+
+.card-form label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.card-form input,
+.card-form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}

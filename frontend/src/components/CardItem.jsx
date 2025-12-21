@@ -3,6 +3,12 @@ function CardItem({ card }) {
     <div className="card-item">
       <p><strong>Brand:</strong> {card.brand}</p>
       <p><strong>Card:</strong> **** {card.last4}</p>
+
+      <p>
+        <strong>Created:</strong>{" "}
+        {new Date(card.createdAt).toLocaleDateString()}
+      </p>
+
       <p className={`card-status ${card.status}`}>
         Status: {card.status}
       </p>
@@ -21,5 +27,6 @@ function CardItem({ card }) {
 }
 
 export default CardItem;
+
 
 
